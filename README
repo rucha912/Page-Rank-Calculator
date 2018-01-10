@@ -1,0 +1,42 @@
+// Name: Rucha Kadam
+// Student ID: 800959724
+// Email: rkadam@uncc.edu
+// Assignment 3: PageRank Implementation
+
+Cluster:
+Input Directory: /user/rkadam/input1
+Output Directory: /user/rkadam/output_pagerank
+
+1. Compile a file
+javac -cp /usr/lib/hadoop/*:/usr/lib/hadoop-mapreduce/PageRank.java -d build -Xlint
+
+2. Create Jar file
+jar -cvf pagerank.jar -C build/ .
+
+3. Run a file
+hadoop jar pageRank.jar MapReduce.Hadoop.pageRank /user/rkadam/input /user/rkadam/output_pagerankinter /user/rkadam/output_final /user/rkadam/node
+
+4. Copy output to a file
+hadoop fs -cat /user/rkadam/output_final/* >output.txt
+
+
+Local:
+Input Directory: /user/cloudera/wiki-micro.txt
+Output Directory: /user/cloudera/pagerankoutput.txt
+
+1. Compile a file
+javac -cp /usr/lib/hadoop/*:/usr/lib/hadoop-mapreduce/pageRank.java -d build -Xlint
+
+2. Create Jar file
+jar -cvf pagerank.jar -C build/ .
+
+3. Run a file
+hadoop jar pagerank.jar MapReduce.Hadoop.pagerank /user/cloudera/wiki-micro.txt /user/rkadam/PageOutput1 /user/rkadam/PageOutput2 /user/rkadam/PageOutput3
+
+4. Copy output to a file
+hadoop fs -cat /user/cloudera/PageOutput2/* >pagerankoutput.txt
+
+
+***** Delete all intermediate and final output files before running any program again, if there are any.
+hadoop fs -rm -r /user/cloudera/PageOutput*
+ 
